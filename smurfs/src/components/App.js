@@ -20,7 +20,7 @@ const App = () => {
           {state.isLoading && <p>Loading your Smurfs!</p>}
         <div>
           {state.smurfs.map(i => (
-          <h4 key={i.id}>{i.name}, {i.age}, {i.height}<span onClick={() => dispatch(removeSmurf(i.id))}> X </span></h4>
+          <h4 key={i.id}>{i.name}, {i.age}, {i.height}<button onClick={() => dispatch(removeSmurf(i.id))}> X </button></h4>
           ))}
           
         </div>
