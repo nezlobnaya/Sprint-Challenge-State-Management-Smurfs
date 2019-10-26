@@ -37,6 +37,19 @@ export function postData(smurf) {
     }
 }
 
+export const REMOVE_SMURF_DATA_START = 'REMOVE_SMURF_DATA_START'
+export const REMOVE_SMURF_DATA_SUCCESS = 'REMOVE_SMURF_DATA_SUCCESS'
+export const REMOVE_SMURF_DATA_FAILURE = 'REMOVE_SMURF_DATA_FAILURE'
 
-
-
+export function removeSmurf(id) {
+    return dispatch => {
+        dispatch({ type: REMOVE_SMURF_DATA_START })
+        axios.delete(`${url}/${id}`)
+        .then(res => {
+            dispatch({ type: REMOVE_SMURF_DATA_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            dispatch({ type: REMOVE_SMURF_DATA_FAILURE, payload: err.response })
+        })
+    }
+}

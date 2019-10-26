@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from '../actions';
+import { fetchData, removeSmurf } from '../actions';
 import Form from '../components/Form/Form';
 import "./App.css";
 
 const App = () => {
   const state = useSelector(state => state)
+  console.log('State',state)
   const dispatch = useDispatch()
 
     return (
@@ -19,8 +20,9 @@ const App = () => {
           {state.isLoading && <p>Loading your Smurfs!</p>}
         <div>
           {state.smurfs.map(i => (
-          <h4 key={i.name}>{i.name}, {i.age}, {i.height}</h4>
+          <h4 key={i.id}>{i.name}, {i.age}, {i.height}<span onClick={() => dispatch(removeSmurf(i.id))}> X </span></h4>
           ))}
+          
         </div>
       </div>
     );

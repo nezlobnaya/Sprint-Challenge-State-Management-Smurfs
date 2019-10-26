@@ -1,11 +1,12 @@
 import { GET_SMURF_DATA_START, GET_SMURF_DATA_SUCCESS, GET_SMURF_DATA_FAILURE, POST_SMURF_DATA_START, 
-    POST_SMURF_DATA_SUCCESS, POST_SMURF_DATA_FAILURE } from '../actions'
+    POST_SMURF_DATA_SUCCESS, POST_SMURF_DATA_FAILURE, REMOVE_SMURF_DATA_START, REMOVE_SMURF_DATA_SUCCESS, REMOVE_SMURF_DATA_FAILURE } from '../actions'
     
     const initialState = {
         smurfs: [],
         isLoading: false,
         isPosting: false,
-        error: null
+        error: null,
+        id: ''
     }
     
     export const reducer = (state = initialState, action) => {
@@ -43,6 +44,20 @@ import { GET_SMURF_DATA_START, GET_SMURF_DATA_SUCCESS, GET_SMURF_DATA_FAILURE, P
                     ...state,
                     error: action.payload,
                     isPosting: false
+                }
+            case REMOVE_SMURF_DATA_START:
+                return{
+                    ...state
+                }
+            case REMOVE_SMURF_DATA_SUCCESS:
+                return {
+                    ...state,
+                    smurfs: action.payload
+                }
+            case REMOVE_SMURF_DATA_FAILURE:
+                return {
+                    ...state,
+                    error: action.payload
                 }
             default:
                 return state
