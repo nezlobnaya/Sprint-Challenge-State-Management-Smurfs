@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../actions';
-
+import Form from '../components/Form/Form';
 import "./App.css";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
           <h4 key={i.name}>{i.name}, {i.age}, {i.height}</h4>
           ))}
         </div>
-
+        <Form />
       </div>
     );
   }
